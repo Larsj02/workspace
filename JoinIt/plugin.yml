@@ -1,0 +1,18 @@
+main: me.joinit.main.main
+name: JoinIt
+version: 1.0
+author: Lars
+
+commands:
+  autojoin:
+    description: Join a Minigame Server
+    usage: /autojoin <gamemode>
+  gamelist:
+    description: Shows every Gamemode
+    usage: /gamelist
+  join:
+    description: Join a Specific Minigame Server
+    usage: /Join <Gamemode>
+  joinit:
+    description: Overview
+    usage: /joinit [<Reload>]

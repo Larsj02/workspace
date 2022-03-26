@@ -1,0 +1,69 @@
+package me.Varo.commands;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+import org.bukkit.Bukkit;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+
+import me.Varo.main.main;
+
+public class VaroCommand implements CommandExecutor{
+
+	@Override
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+		//Check if the Command Sender is a Player
+		if(sender instanceof Player) {
+			//Get the Player who sent the Command
+			Player p = (Player)sender;
+            ///////////////////////////////////////////////////////////////////////
+			//get messages.yml
+			String statserror = main.getmsg().getString("stats.error");
+			///////////////////////////////////////////////////////////////////////
+			//Stats.yml
+			File sfile = new File("plugins/Varo/", "stats.yml");
+			FileConfiguration scfg = YamlConfiguration.loadConfiguration(sfile);
+			///////////////////////////////////////////////////////////////////////
+			
+			//Check if the Arguments have a length of 2 
+			if(args.length == 2) {
+				//if the arguments have a length of 2 then get Target
+				Player target = Bukkit.getPlayer(args[1]);
+				//Check if the first argument is "stats"
+				if(args[0].equalsIgnoreCase("stats")) {
+					//Check if the Target is Online
+					if(target != null) {
+						//Get target UUID
+						UUID targetuuid = target.getUniqueId();
+						//getStats of TargetUUID
+						int kills = scfg.getInt(targetuuid+".kills");
+						int sessions = scfg.getInt(targetuuid+".sessions");
+						
+						//Send Message with Stats from Target to Player
+						p.sendMessage("§ka");
+						p.sendMessage("§k §rPlayer:");
+						p.sendMessage("§k §r"+target.getName());
+						p.sendMessage("§ka");
+						p.sendMessage("§k §rKills:");
+						p.sendMessage("§k"+kills);
+						p.sendMessage("§ka");
+					}else {
+						//When the Target is Offline send Error
+						p.sendMessage(statserror);
+					}
+				}
+			}
+		}else {
+			//When the Sender isn't a Player send Error
+			sender.sendMessage("[OnlyVaro] You can't do this in the Console");
+		}
+		return true;
+	}
+
+}

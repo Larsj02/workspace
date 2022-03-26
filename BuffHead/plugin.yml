@@ -1,0 +1,9 @@
+main: me.buffhead.main.main
+name: Buffhead
+version: 1.0
+author: Lars
+
+commands:
+  buffhead:
+    description: give a head to a player
+    usage: /buffhead <Player> <HeadOwner>

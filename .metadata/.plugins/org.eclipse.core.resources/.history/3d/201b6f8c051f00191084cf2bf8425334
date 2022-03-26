@@ -1,0 +1,28 @@
+package me.ChatItem.listener;
+
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
+import me.ChatItem.main.main;
+
+public class PlayerChatListener implements Listener{
+	
+	@SuppressWarnings("deprecation")
+	@EventHandler
+	public void onChat(AsyncPlayerChatEvent e) {
+		Player p = e.getPlayer();
+		String msg = e.getMessage();
+		String rpl = main.getPlugin().getConfig().getString("ChatItem.Chat.replace");
+		String item = p.getItemInHand().getItemMeta().getDisplayName();
+		byte item2 = p.getItemInHand().getData().getData();
+		
+		
+		
+		
+		
+		String newmsg = msg.replace(rpl, item+item2);
+		e.setMessage(newmsg);
+	}
+
+}

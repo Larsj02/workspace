@@ -1,0 +1,34 @@
+package me.autofahrt.main;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class main extends JavaPlugin{
+	
+	String Prefix = "§7[§aAutofahrt§7]§b";
+	
+	public void onEnable() {
+		System.out.println("[Autofahrt] Plugin wurde Aktiviert!");
+	}
+	
+	public void onDisable() {
+		System.out.println("[Autofahrt] Plugin wurde Deaktiviert!");
+	}
+
+	public boolean onCommand(CommandSender sender, Command cmd, String cmdlabel, String[] args) {
+		
+		if(cmd.getName().equalsIgnoreCase("tset")) {
+			if(sender instanceof Player) {
+				Player p = (Player) sender;
+				p.sendMessage(Prefix+"");
+			}else {
+				sender.sendMessage("[Autofahrt] Plugin von Lars J");
+			}
+		}
+		
+		return true;
+	}
+	
+}

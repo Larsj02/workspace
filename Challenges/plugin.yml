@@ -1,0 +1,25 @@
+main: me.challenges.main.main
+name: Challenges
+version: 1.0
+author: Larsj02
+api-version: 1.13
+
+commands:
+  ping:
+    description: ping
+    usage:
+  pos:
+    description: position
+    usage:
+  timer:
+    description: timer
+    usage:
+  gm:
+    description: gamemode
+    usage:
+  settings:
+    description: einstellungen
+    usage:
+  bp:
+    description: backpack
+    usage:

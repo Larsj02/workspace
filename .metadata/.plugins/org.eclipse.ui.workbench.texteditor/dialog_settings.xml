@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="joinsys"/>
+		<item key="casesensitive" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="wrap" value="true"/>
+		<item key="wholeword" value="false"/>
+		<list key="findhistory">
+			<item value="crytec"/>
+			<item value="System.out.println"/>
+			<item value="&quot;World= &quot;+"/>
+			<item value="&quot; Z=&quot;+"/>
+			<item value="&quot; Y=&quot;+"/>
+			<item value="&quot; X=&quot;+"/>
+			<item value="+&quot; X=&quot;+"/>
+			<item value="times"/>
+			<item value="messages"/>
+			<item value="original+"/>
+		</list>
+		<list key="replacehistory">
+			<item value="joinsys"/>
+			<item value=""/>
+			<item value="onlinetime"/>
+			<item value="online"/>
+			<item value="times"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_WIDTH" value="284"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+		<item key="DIALOG_HEIGHT" value="369"/>
+		<item key="DIALOG_X_ORIGIN" value="485"/>
+		<item key="DIALOG_Y_ORIGIN" value="117"/>
+	</section>
+</section>

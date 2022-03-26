@@ -1,0 +1,21 @@
+main: me.lobbysystem.main.main
+name: LobbySystem
+version: 1.0
+author: EinYoutuber
+
+commands:
+  msg:
+    description: 
+    usage:
+  fly:
+    description: 
+    usage:
+  clearchat:
+    description: 
+    usage:
+  broadcast:
+    description: 
+    usage:
+  support:
+    description: 
+    usage:

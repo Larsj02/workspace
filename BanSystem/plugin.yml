@@ -1,0 +1,12 @@
+main: me.bansystem.main.main
+name: BanSystem
+version: 1.0
+author: Lars
+
+commands:
+  ban:
+    description: ban a Player
+    usage: /ban <Player>
+  unban:
+    description: unban a Player
+    usage: /unban <uuid>

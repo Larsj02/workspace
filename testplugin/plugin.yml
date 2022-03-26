@@ -1,0 +1,12 @@
+main: me.testplugin.main.main
+name: TestPlugin
+version: 1.0
+author: Lars Johnen
+
+commands:
+  test:
+    description: es ist ein test command
+    usage: /test
+  teleport:
+    description: teleportiert dich zu einem spieler
+    usage: /teleport [Spieler]

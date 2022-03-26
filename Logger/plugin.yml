@@ -1,0 +1,12 @@
+main: me.logger.main.main
+name: Logger
+version: 1.0
+author: Lars
+
+commands:
+  logger:
+    description: shows the log of a Player
+    usage: /logger <onlinetime/messages/locations> <player>
+  playtime:
+    description: show the playtime of a Player
+    usage: /playtime <player>

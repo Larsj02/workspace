@@ -1,0 +1,32 @@
+main: me.systemlars.main.main
+name: System
+version: 1.0
+author: Lars Johnen
+commands:
+     System:
+          description: Zeigt den Programmierer des Plugins.
+          usage: /System
+     Clear:
+          description: Leert dein Inventar!
+          usage: /Clear
+     Menu:
+          description: oefnet ein menue
+          usage: /Menu
+     Stats:
+          description: zeigt deine Spielzeit
+          usage: /Stats
+     Money:
+          description: zeigt dein Geld
+          usage: /Money
+     Msg:
+          description: schreib eine nachricht
+          usage: /Msg <Spieler> <Nachricht>
+     Invsee:
+          description: oeffnet das Inventar eines bestimmten Spieler
+          usage: /Invsee <Spieler>
+     Clearchat:
+          description: Leert den Chat
+          usage: /Clearchat
+     Ping:
+          description: Zeigt deinen Ping
+          usage: /Ping

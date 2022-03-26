@@ -1,0 +1,107 @@
+package me.logger.main;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.UUID;
+
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.PluginManager;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import me.logger.commands.LoggerCommand;
+import me.logger.commands.PlaytimeCommand;
+import me.logger.listener.PlayerChatListener;
+import me.logger.listener.PlayerJoinListener;
+import me.logger.listener.PlayerQuitListener;
+
+
+public class main extends JavaPlugin{
+	
+	private static main plugin;
+	
+	
+    public static String prefix;
+	
+	public void onEnable() {
+		plugin = this;
+		
+		loadConfig();
+		prefix = getConfig().getString("Config.Prefix");
+		
+		startTimer();
+		
+		getCommand("logger").setExecutor(new LoggerCommand());	
+		getCommand("playtime").setExecutor(new PlaytimeCommand());	
+		
+		PluginManager pluginmanager = Bukkit.getPluginManager();	
+		pluginmanager.registerEvents(new PlayerJoinListener(), this);
+		pluginmanager.registerEvents(new PlayerQuitListener(), this);
+		pluginmanager.registerEvents(new PlayerChatListener(), this);
+		
+		System.out.println("[Logger] Plugin by Lars https://www.fiverr.com/users/onlylars/");
+		System.out.println("[Logger] Logger was Sucsessfully enabled!");
+		System.out.println(prefix);
+	}
+	public void onDisable() {
+		System.out.println("[Logger] Logger was Disabled!");
+	}	
+	
+	public void loadConfig() {
+		reloadConfig();
+		
+		getConfig().options().header("be Carfully! HOW TO EDIT: 1.Edit 2.Reload or Restart the Server  (ColorCodes: §+ 1 2 3 4 5 6 7 8 9 a b c d e f");
+		
+		getConfig().addDefault("Logger.error", "§8[§bLogger§8] §f/logger <messages/onlinetime/locations> <name>");
+		getConfig().addDefault("Logger.nopermission", "§8[§bLogger§8] §cYou don't have enough permission to do that!");
+		getConfig().addDefault("Logger.messages.topborder", "§l§m====================");
+		getConfig().addDefault("Logger.messages.playername", "§lPLAYER");
+		getConfig().addDefault("Logger.messages.space1", "");
+		getConfig().addDefault("Logger.messages.Lastmessages", "Last Messages");
+		getConfig().addDefault("Logger.messages.space1", "");
+		getConfig().addDefault("Logger.messages.lastcommands", "Last Commands");
+		getConfig().addDefault("Logger.messages.bottomborder", "§l§m====================");
+		
+		getConfig().options().copyDefaults(true);
+		saveConfig();
+		System.out.println("[Logger] Successfully (re)loaded config.yml");
+	}
+	
+	public static main getPlugin() {
+		return plugin;
+	}
+	
+	public void startTimer() {
+		Bukkit.getScheduler().scheduleSyncRepeatingTask(this, new Runnable() {
+			@Override
+			public void run() {
+				for(Player players : Bukkit.getOnlinePlayers()) {
+					UUID uuid = players.getUniqueId();
+					File file = new File("plugins/Logger/"+uuid, "time.yml");
+					FileConfiguration cfg = YamlConfiguration.loadConfiguration(file);
+					int hours = cfg.getInt("Time.hours");
+					int minutes = cfg.getInt("Time.minutes");
+					
+					minutes ++;
+					
+					cfg.set("Time.minutes", minutes);
+					try {
+						cfg.save(file);
+					} catch (IOException e) {
+					}
+					if(minutes == 60) {
+						cfg.set("Time.minutes", 0);
+						hours ++;
+						cfg.set("Time.hours", hours);
+						try {
+							cfg.save(file);
+						} catch (IOException e) {
+						}
+					}
+				}
+			}
+		}, 20*60, 20*60);
+	}
+}
